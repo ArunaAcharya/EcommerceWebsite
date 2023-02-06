@@ -1,0 +1,17 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+{% extends 'bootstrap/base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+{{ wtf.quick_form(form)}}
+
+{% with messages= get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p class="flash", style="color: red"><i>{{message}}</i></p>
+{% endfor %}
+{%endif %}
+{% endwith %}
+{% endblock %}

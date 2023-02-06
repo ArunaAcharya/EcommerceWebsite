@@ -1,0 +1,77 @@
+{% include "header.html"%}
+{% import 'bootstrap/wtf.html' as wtf %}
+ <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+<nav class="navbar  navbar-expand-lg nav ">
+
+
+    <div id="mySidebar" class="sidebar">
+  <a   href="javascript:void(0)" class="closebtn nav-link" onclick="closeNav()">×</a>
+  <a class ="nav-link" href="{{url_for('women')}}">Women</a>
+  <a class ="nav-link" href="{{url_for('men')}}">Men</a>
+  <a class ="nav-link" href="#">Kids</a>
+  <a class ="nav-link" href="#">Accessories</a>
+  <a class ="nav-link" href="{{url_for('login')}}">Login</a>
+  <a class ="nav-link" href="{{url_for('signup')}}">Signup</a>
+  <a class ="nav-link" href="{{url_for('logout')}}">Logout</a>
+
+
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ </button>
+</div>
+    <a class="navbar-brand mx-auto" href="{{url_for('home')}}">RAY</a>
+
+
+<!--    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">-->
+<!--        <ul class="navbar-nav ml-auto mb-lg-0">-->
+
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link"  aria-current="page" href="{{url_for('women')}}">women</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link"  aria-current="page" href="{{url_for('men')}}">men</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+    <form  method="POST" class="d-flex nav-item ms-auto" action="{{url_for('search')}}">
+        {{form.hidden_tag() }}
+        <input class="form-control me-2 input-group" type="search" name="search" placeholder='Search' aria-label="Search">
+    <button type="submit" id="search-btn" class="btn">
+    <i class="fa-solid icon-btn fa-magnifying-glass"></i>
+</button>
+                </form>
+ {% if 'uid' in session %}
+   <a href="{{url_for('bag')}}" type="submit" class="ml-auto cart_len nav-item">
+       <span class="fa-layers fa-fw">
+       <i id ='bag'class="fa-layers fa-solid fa-bag-shopping"></i>
+           {% if 'cart' in session: %}
+           {%if session['cart'] > 0%}
+       <span class="fa-layers-counter" style="font-size:50px"> {{session['cart']}}</span>
+           {% endif %}
+           {% endif %}
+       </span>
+
+   </a>
+   {% endif %}
+
+ <a class=" ml-auto nav-item" type="submit" id="heart"> <i class="fa-layers icon-btn fa-solid fa-heart"></i>
+</a>
+
+
+
+
+
+</nav>
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>

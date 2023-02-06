@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+
+
+<div class="container product-container">
+{% with messages= get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p class="flash" style="color: red">{{message}}</p>
+{% endfor %}
+{%endif %}
+
+{% endwith %}
+    <div class="row">
+{% for product in searched %}
+    <div class="col-12 col-sm-6 col-lg-3 col-md-4 col-lg-4 col-xl-3" >
+
+        <div class="card border-0 ">
+
+            <div class="card-header border-0">
+
+                 <a  href="{{url_for('viewproduct', product_id = product.pCode) }}">
+              <img class="card-img w-100" src="static/images/products/{{product.category}}/{{product.picture}}">
+                 </a>
+                </div>
+
+            <div class="card-body border-0">
+                <div class="row">
+                    <div class="col">
+                        <a class="product_name" href="{{url_for('viewproduct', product_id = product.pCode) }}">
+                {{product.name}}
+                            </a>
+                        <p>${{product.price}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+

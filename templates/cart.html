@@ -1,0 +1,50 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+
+<div class="container cart-container">
+{% if session ['cart'] ==0%}
+    <p class="log-sign-p">your cart is empty!</p>
+    {% endif%}
+
+{%if session['cart'] > 0%}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">quantity</th>
+        </tr>
+        </thead>
+        {% for item in cart %}
+        <tr>
+            <td><img class="cartimg" src="static/images/products/{{item.category}}/{{item.picture}}"></td>
+            <td>{{item.name}}</td>
+            <td>${{item.price}} </td>
+            <td>{{item.quantity}}
+                <a class="plus-icon" href="{{url_for('add_quantity', product_id= item.products)}}">+</a>
+                <a class="plus-icon" href="{{url_for('remove_quantity',product_id= item.products) }}">-</a>
+            </td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td> </td>
+            <td>${{total_price}}</td>
+            <td></td>
+        </tr>
+
+        <tbody>
+
+
+        <tr>
+
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn  btn-primary" id="checkout" href="{{url_for('pay')}}" >Checkout</a>
+{% endif %}
+<a class="btn btn-primary " type="submit" id="continue-shopping" href="{{url_for('home')}}">Continue Shopping</a>
+
+</div>
+

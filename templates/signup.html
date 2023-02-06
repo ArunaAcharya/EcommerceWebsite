@@ -1,0 +1,23 @@
+{% extends 'bootstrap/base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+
+
+{% block content %}
+<div class="log-sign-container container h-100">
+    {% with messages= get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p class="flash" style="color: red">{{message}}</p>
+{% endfor %}
+{%endif %}
+
+{% endwith %}
+    <p class="log-sign-p">Create an account to make purchases, create wishlists!</p>
+    <div class="log-sign-form">
+{{ wtf.quick_form(form)}}
+        </div>
+</div>
+
+{% endblock %}

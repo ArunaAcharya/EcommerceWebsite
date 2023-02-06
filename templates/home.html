@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+<div class="container home-container">
+    <a class="" style="text-decoration: none;"href="{{url_for('men')}}">
+<div class=" homepage" style="background-image:url('static/images/men-camp.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div style="color: white;font-family: 'Kanit', sans-serif; font-size: 10em;" class="site-heading">
+                    <h1>New Fall 2023 Men</h1>
+                    <h4>Discover More</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </a>
+<!--    <a href="{{url_for('women')}}"><img class="home-pic" src="static/images/homepage.jpeg">-->
+
+<!--    </a>-->
+<a class="" style="text-decoration: none;" href="{{url_for('women')}}">
+<div class=" homepage" style="background-image:url('static/images/homepage2.jpeg'); width: 100%;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div style="color: white;font-family: 'Kanit', sans-serif; font-weight: 900" class="site-heading">
+                    <h1>New Fall 2023 Women</h1>
+                    <h4> Discover More</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--<div class=" homepage">-->
+<!--    <a href="{{url_for('men')}}"><img class="home-pic" src="static/images/homepage2.jpeg"></a>-->
+<!--</div>-->
+    </div>
+</a>
+</div>
+
+{% include 'footer.html'%}
+

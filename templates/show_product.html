@@ -1,0 +1,29 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{%  block content  %}
+
+<div class="container show-product-container">
+<div class="row">
+    <div class="col-sm">
+        <img id="cart-img" src="/static/images/products/{{category}}/{{picture}}">
+<p>{{description}}</p>
+    </div>
+
+    <div class="col-sm checkout-container">
+        <p><strong>{{name}}</strong> </p>
+        <p style="font-size: 1rem;">${{product_price}}</p>
+        {{wtf.quick_form(form)}}
+        <button class=" btn btn-checkout "><a class="checkout" href="{{url_for('pay')}}" >Checkout</a></button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+<!--  </form>-->
+<!--      <form  class="product-view" action="/checkout" method="POST">-->
+<!--          <button class="btn btn-primary" type="submit">Checkout</button>-->
+
+<!--    </form>-->

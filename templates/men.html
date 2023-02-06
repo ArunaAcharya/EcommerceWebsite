@@ -1,0 +1,38 @@
+{% include 'header.html' %}
+{% include 'navigation.html'%}
+
+<div class="container product-container">
+    <div class="row product-row">
+  {% for product in products %}
+    <div class=" col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4" >
+
+        <div class=" product-card card border-0 ">
+
+            <div class="card-header border-0">
+
+                 <a  href="{{url_for('viewproduct', product_id = product.pCode) }}">
+              <img class="card-img w-100" src="static/images/products/{{product.category}}/{{product.picture}}">
+                 </a>
+                </div>
+
+            <div class="card-body border-0">
+                <div class="row">
+                    <div class="col">
+                        <a class="product_name" href="{{url_for('viewproduct', product_id = product.pCode) }}">
+                {{product.name}}
+                            </a>
+                <p>${{product.price}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+
+

@@ -1,0 +1,14 @@
+{% import "bootstrap/wtf.html" as wtf%}
+{% extends 'bootstrap/base.html'%}
+
+{% block content %}
+<div class="container" >
+{{wtf.quick_form(form)}}
+<a href="{{url_for('admin_delete_product', product_id= product.pCode)}}">
+                                            <div class="">
+                                                <span class="">Delete</span>
+
+                                            </div>
+                                        </a>
+</div>
+{% endblock%}
