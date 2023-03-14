@@ -8,7 +8,7 @@ from flask_login import login_user, LoginManager, login_required, current_user, 
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-from sqlalchemy import select, insert, delete, update
+from sqlalchemy import select, insert, delete, update, or_
 
 #app config
 app= Flask(__name__)
@@ -422,15 +422,13 @@ def base():
 def search():
     form = SearchForm()
     if form.validate_on_submit():
-
-        searched= form.search.data
-        query= db.query(Product).filter(Product.name == searched).all()
-        print(query)
-        if query == []:
-            flash(f'We could not  find any results for "{searched}"')
+        search_query = form.search.data
+        query = db.query(Product).filter(
+            or_(Product.name.like(f'%{search_query}%'), Product.description.like(f'%{search_query}%'))).all()
+        if not query:
+            flash(f'We could not find any results for "{search_query}"')
             return render_template("search.html")
-
-        return render_template('search.html', form= form, searched= query)
+        return render_template('search.html', form=form, searched=query)
     else:
         return redirect(request.referrer)
     
